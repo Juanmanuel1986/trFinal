@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Equipo
+from .forms import EquipoForm
 # Create your views here.
 
 def inicio(request): #es la solicitud que se le va a hacer a la aplicacion
@@ -20,9 +21,20 @@ def niveles(request):
 
 
 def crear(request): #vista para la creacion de los equipos
-    return render(request,'abmequipos/crear.html')    
+    formulario = EquipoForm(request.POST or None, request.FILES or None)
+    if formulario.is_valid():
+        formulario.save()
+        return redirect('abmequipos')
+    return render(request,'abmequipos/crear.html', {'formulario': formulario})    
 
 
-def editar(request): #vista para la creacion de los equipos
-    return render(request,'abmequipos/editar.html')    
+def editar(request,id): #vista para la creacion de los equipos
+    abmequipo = Equipo.objects.get(id=id)
+    formulario = EquipoForm(request.POST or None, request.FILES or None, instance = abmequipo)
+    return render(request,'abmequipos/editar.html', {'formulario':formulario})    
 
+
+def eliminar(request,id):
+    equipo = Equipo.objects.get(id=id)
+    equipo.delete()
+    return redirect('abmequipos') 

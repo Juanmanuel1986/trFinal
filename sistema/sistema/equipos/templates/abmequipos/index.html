@@ -37,7 +37,11 @@
                     <tr class="">
                         <td>{{abmequipo.id}}</td>
                         <td>{{abmequipo.equipo}}</td>
-                        <td>{{abmequipo.imagen}}</td>
+                        <td>
+                           <img src=" {{abmequipo.imagen.url}}" height="50"/> 
+                           
+                        
+                        </td>
                         <td>{{abmequipo.jira}}</td>
                         <td>{{abmequipo.devops}}</td>
                         <td>{{abmequipo.refDev}}</td>
@@ -46,8 +50,8 @@
                         <td>{{abmequipo.nvlAuto}}</td>
                         <td>{{abmequipo.comentario}}</td>
                         
-                        <td> <a name="" id="" class="btn btn-info" href="{% url 'editar' %}" role="Editar">Editar</a><br><br>
-                            <a name="" id="" class="btn btn-danger" href="#" role="Editar">Borrar</a></td>
+                        <td> <a name="" id="" class="btn btn-info" href="{% url 'editar' abmequipo.id %}" role="Editar">Editar</a><br><br>
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar' abmequipo.id %}" role="Editar">Borrar</a></td>
                        
 
                     </tr>
