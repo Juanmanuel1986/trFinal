@@ -31,6 +31,9 @@ def crear(request): #vista para la creacion de los equipos
 def editar(request,id): #vista para la creacion de los equipos
     abmequipo = Equipo.objects.get(id=id)
     formulario = EquipoForm(request.POST or None, request.FILES or None, instance = abmequipo)
+    if formulario.is_valid() and request.POST:
+        formulario.save()
+        return redirect('abmequipos')
     return render(request,'abmequipos/editar.html', {'formulario':formulario})    
 
 
