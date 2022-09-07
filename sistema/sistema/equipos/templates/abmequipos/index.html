@@ -6,7 +6,7 @@
 
 <div class="card">
     <div class="card-header">
-        Listar equipos
+        <a name="" id="" class="btn btn-success" href="{% url 'crear' %}" role="button">Agregar Equipo</a>
     </div>
     <div class="card-body">
         <h4 class="card-title">Equipos</h4>
@@ -25,26 +25,33 @@
                         <th scope="col">Nvl Code Quality </th>
                         <th scope="col">Nvl Auto-QA</th>
                         <th scope="col">Comentario</th>
+                        
                         <th scope="col">Acciones</th>
 
                     </tr>
                 </thead>
                 <tbody>
+
+                    {% for abmequipo in abmequipos %}
+
                     <tr class="">
-                        <td scope="row">0</td>
-                        <td>prepago</td>
-                        <td>imagen.jpg</td>
-                        <td>PREP</td>
-                        <td>SI</td>
-                        <td>Referente1</td>
-                        <td>Referente2</td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>soy un comentario</td>
-                        <td>Editar | Borrar</td>
+                        <td>{{abmequipo.id}}</td>
+                        <td>{{abmequipo.equipo}}</td>
+                        <td>{{abmequipo.imagen}}</td>
+                        <td>{{abmequipo.jira}}</td>
+                        <td>{{abmequipo.devops}}</td>
+                        <td>{{abmequipo.refDev}}</td>
+                        <td>{{abmequipo.refQA}}</td>
+                        <td>{{abmequipo.nvlCode}}</td>
+                        <td>{{abmequipo.nvlAuto}}</td>
+                        <td>{{abmequipo.comentario}}</td>
+                        
+                        <td> <a name="" id="" class="btn btn-info" href="{% url 'editar' %}" role="Editar">Editar</a><br><br>
+                            <a name="" id="" class="btn btn-danger" href="#" role="Editar">Borrar</a></td>
                        
 
                     </tr>
+                    {% endfor %}
                     
                 </tbody>
             </table>

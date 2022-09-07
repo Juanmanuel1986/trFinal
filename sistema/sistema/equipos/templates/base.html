@@ -21,13 +21,14 @@
 
 <nav class="navbar navbar-expand navbar-light bg-light">
     <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="#" aria-current="page">Inicio <span class="visually-hidden">(current)</span></a>
-        <a class="nav-item nav-link" href="#">Equipos</a>
-        <a class="nav-item nav-link" href="#">Niveles Madurez</a>
-        <a class="nav-item nav-link" href="#">Nosotros</a>
+        <a class="nav-item nav-link" href="{% url 'inicio' %}">Inicio</a>
+        <a class="nav-item nav-link" href="{% url 'abmequipos' %}">Equipos</a>
+        <a class="nav-item nav-link" href="{% url 'niveles' %}">Niveles Madurez</a>
+        <a class="nav-item nav-link" href="{% url 'nosotros' %}">Nosotros</a>
     </div>
 </nav>
 
+<br>
 <div class="container">
   <div class="row">
       <div class="col-12">

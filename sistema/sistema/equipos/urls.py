@@ -7,4 +7,7 @@ urlpatterns = [
     path('nosotros', views.nosotros, name='nosotros'),
     #     URL  ----- VISTA ------ ?
     path('abmequipos', views.abmequipos, name='abmequipos'),
+    path('niveles', views.niveles, name='niveles'),
+    path('abmequipos/crear', views.crear, name='crear'),# con esto podemos acceder a la vista crear
+    path('abmequipos/editar', views.editar, name='editar'),#
 ]   
