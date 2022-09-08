@@ -3,6 +3,9 @@ from . import views # para acceder a las vistas, para preguntarle al usuario a q
 from django.conf import settings
 from django.contrib.staticfiles.urls import static
 
+#logout
+from django.contrib.auth.views import LogoutView
+
 
 
 urlpatterns = [
@@ -14,10 +17,18 @@ urlpatterns = [
     path('abmequipos/crear', views.crear, name='crear'),# con esto podemos acceder a la vista crear
     #path('abmequipos/editar', views.editar, name='editar'),#
     path('eliminar/<int:id>', views.eliminar, name='eliminar'),
+   # path('eliminar/<id>', views.eliminar, name='eliminar'),
     path('abmequipos/editar/<int:id>', views.editar, name='editar'),#
 
     #login
-    path('login', views.login_request, name="Login")
+    path('login', views.login_request, name="Login"),
+
+    #registro
+    path('register', views.register, name='Register'),
  
+    #logout
+    path('logout', LogoutView.as_view(template_name='paginas/logout.html'), name='Logout'),
+ 
+
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

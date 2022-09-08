@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Equipo
-from .forms import EquipoForm
+from .forms import EquipoForm,UserRegisterForm
 
 #login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -77,3 +77,24 @@ def login_request(request):
     form = AuthenticationForm()
 
     return render(request, "paginas/login.html", {"form": form})    
+
+
+#registro
+
+def register(request):
+
+      if request.method == 'POST':
+
+            #form = UserCreationForm(request.POST)
+            form = UserRegisterForm(request.POST)
+            if form.is_valid():
+
+                  username = form.cleaned_data['username']
+                  form.save()
+                  return render(request,"paginas/inicio.html" ,  {"mensaje":"SU USUARIO FUE CREADO CORRECTAMENTE"})
+
+      else:
+            #form = UserCreationForm()       
+            form = UserRegisterForm()     
+
+      return render(request,"paginas/registro.html" ,  {"form":form})
