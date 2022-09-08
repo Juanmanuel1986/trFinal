@@ -8,8 +8,14 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
 
-# Create your views here.
+#decorador
+# Para el decorador
+from django.contrib.auth.decorators import login_required     
 
+
+
+# Create your views here.
+@login_required
 def inicio(request): #es la solicitud que se le va a hacer a la aplicacion
     return render(request,'paginas/inicio.html') 
 
@@ -98,3 +104,6 @@ def register(request):
             form = UserRegisterForm()     
 
       return render(request,"paginas/registro.html" ,  {"form":form})
+
+
+ 
