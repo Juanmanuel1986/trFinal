@@ -2,6 +2,12 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Equipo
 from .forms import EquipoForm
+
+#login
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+
+
 # Create your views here.
 
 def inicio(request): #es la solicitud que se le va a hacer a la aplicacion
@@ -41,3 +47,33 @@ def eliminar(request,id):
     equipo = Equipo.objects.get(id=id)
     equipo.delete()
     return redirect('abmequipos') 
+
+
+
+#login
+def login_request(request):
+
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data = request.POST)
+
+        if form.is_valid():  # Si pasó la validación de Django
+
+            usuario = form.cleaned_data.get('username')
+            contrasenia = form.cleaned_data.get('password')
+
+            user = authenticate(username= usuario, password=contrasenia)
+
+            if user is not None:
+                login(request, user)
+
+                return render(request, "paginas/inicio.html", {"mensaje":f"Bienvenido {usuario}"})
+            else:
+                return render(request, "paginas/inicio.html", {"mensaje":"Datos incorrectos"})
+           
+        else:
+
+            return render(request, "paginas/loginfallido.html", {"mensaje":"Formulario erroneo"})
+
+    form = AuthenticationForm()
+
+    return render(request, "paginas/login.html", {"form": form})    

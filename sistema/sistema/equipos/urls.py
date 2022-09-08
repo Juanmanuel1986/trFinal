@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import static
 
 
+
 urlpatterns = [
     path('', views.inicio, name='inicio'), # aqui el usuario puede entrar y acceder a la vista. En la parte de name, dice con la palabra que voy a ingresar en este caso inicio.
     path('nosotros', views.nosotros, name='nosotros'),
@@ -14,4 +15,9 @@ urlpatterns = [
     #path('abmequipos/editar', views.editar, name='editar'),#
     path('eliminar/<int:id>', views.eliminar, name='eliminar'),
     path('abmequipos/editar/<int:id>', views.editar, name='editar'),#
+
+    #login
+    path('login', views.login_request, name="Login")
+ 
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
