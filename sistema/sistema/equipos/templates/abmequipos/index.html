@@ -3,13 +3,19 @@
 {% block titulo %} Listado equipos {% endblock %}
 
 {% block contenido %}
+{% load static %}
+<img src="{% static 'equipos/Claro-Logo.png' %}"   height="50"  alt=""> 
+<br>
+<br>
 
 <div class="card">
     <div class="card-header">
-        <a name="" id="" class="btn btn-success" href="{% url 'crear' %}" role="button">Agregar Equipo</a>
+     <a name="" id="" class="btn btn-dark" href="{% url 'crear' %}" role="button">Agregar Equipo</a>
+     
     </div>
+    
     <div class="card-body">
-        <h4 class="card-title">Equipos</h4>
+        <h4 class="card-title">Listado de equipos</h4>
         
         <div class="table-responsive">
             <table class="table">
@@ -20,8 +26,8 @@
                         <th scope="col">Imagen</th>
                         <th scope="col">Jira</th>
                         <th scope="col">Devops</th>
-                        <th scope="col">Ref Dev</th>
-                        <th scope="col">Ref QA</th>
+                        <th scope="col">Ref. Dev</th>
+                        <th scope="col">Ref. QA</th>
                         <th scope="col">Nvl Code Quality </th>
                         <th scope="col">Nvl Auto-QA</th>
                         <th scope="col">Comentario</th>
@@ -50,8 +56,8 @@
                         <td>{{abmequipo.nvlAuto}}</td>
                         <td>{{abmequipo.comentario}}</td>
                         
-                        <td> <a name="" id="" class="btn btn-info" href="{% url 'editar' abmequipo.id %}" role="Editar">Editar</a><br><br>
-                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar' abmequipo.id %}" role="Editar">Borrar</a></td>
+                        <td> <a name="" id="" class="btn btn-secondary" href="{% url 'editar' abmequipo.id %}" role="Editar">Editar</a><br><br>
+                            <a name="" id="" class="btn btn-secondary" href="{% url 'eliminar' abmequipo.id %}" role="Editar">Borrar</a></td>
                        
 
                     </tr>
@@ -66,7 +72,7 @@
 
     </div>
     <div class="card-footer text-muted">
-        Footer
+        Recorda ante cualquier duda podes contactarnos en ciclo_de_vida_de_desarrollo@claro.com.ar
     </div>
 </div>
 

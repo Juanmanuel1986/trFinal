@@ -6,14 +6,24 @@
 
 <div class="p-5 bg-light">
     <div class="container">
-        <h1 class="display-3">Niveles de Madurez Equipos IT - Code Quality & Regression Test</h1>
-        <p class="lead">Podras Ingresar a cargar o editar equipos.</p>
+        {% load static %}
+        <img src="{% static 'equipos/Claro-Logo.png' %}"   height="50"  alt=""> 
+        <br>
+        <h1 class="display-3">Niveles de madurez en equipos IT</h1>
+        <h2 class="display-5"><b>Code Quality</b> & <b>Regression Test</b></h2>
+       
+        <!--<p class="lead">Podras Ingresar a cargar o editar equipos.</p>-->
         <hr class="my-2">
         {{mensaje}}
         <p class="lead"></p>
-            <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Empezar</a>
-
-
+        <p class="lead">En este sitio podras cargar los datos de tu equipo y tener una vision del resto de equipos encuestados.</p>
+        <p class="lead">Si no estas en la lista, <b>¡podes sumarte!</b></p>
+        <br>
+       
+        <a class="btn btn-danger btn-lg" href="{% url 'abmequipos' %}" role="button">Listado de equipos</a>
+        <a class="btn btn-secondary btn-lg" href="{% url 'niveles' %}" role="button">Niveles de Madurez</a>
+       
+        
 
     </div>
    
