@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Equipo
-from .forms import EquipoForm,UserRegisterForm
+from .forms import EquipoForm,UserRegisterForm,UserEditForm
 
 #login
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -19,6 +19,7 @@ from django.contrib.auth.decorators import login_required
 def inicio(request): #es la solicitud que se le va a hacer a la aplicacion
     return render(request,'paginas/inicio.html') 
 
+@login_required
 def nosotros(request): #es la solicitud que se le va a hacer a la aplicacion
     return render(request,'paginas/nosotros.html') #busca archivo nosotros.html y lo renderiza, lo busca en paginas/nosotros. dentro de templates.    
 
@@ -106,4 +107,32 @@ def register(request):
       return render(request,"paginas/registro.html" ,  {"form":form})
 
 
- 
+ #editarperfil
+@login_required
+def editarPerfil(request):
+
+    usuario = request.user
+
+    if request.method == 'POST':
+
+        miFormulario = UserEditForm(request.POST)
+
+        if miFormulario.is_valid():
+
+            informacion = miFormulario.cleaned_data
+
+            usuario.email = informacion['email']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password2']
+            usuario.last_name = informacion['last_name']
+            usuario.first_name = informacion['first_name']
+
+            usuario.save()
+
+            return render(request, "paginas/inicio.html")
+
+    else:
+
+        miFormulario = UserEditForm(initial={'email': usuario.email})
+
+    return render(request, "paginas/editarPerfil.html", {"miFormulario": miFormulario, "usuario": usuario})

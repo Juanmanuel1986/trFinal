@@ -28,7 +28,9 @@ urlpatterns = [
  
     #logout
     path('logout', LogoutView.as_view(template_name='paginas/logout.html'), name='Logout'),
- 
+    
+    #editarperfil
+    path('editarPerfil', views.editarPerfil, name='EditarPerfil'),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
