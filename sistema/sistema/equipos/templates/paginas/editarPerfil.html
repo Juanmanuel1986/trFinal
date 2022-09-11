@@ -4,10 +4,21 @@
 
 {% block contenido %} 
 
-    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Formulario - Editar Perfil</h1>
-    <h1>De {{usuario}}</h1>
-    
+
+<div class="p-5 bg-light">
+    <div class="container">
+        {% load static %}
+        <img src="{% static 'equipos/Claro-Logo.png' %}"   height="50"  alt=""> 
+        <br>
+        
+        <h2 class="display-5"><b>Editar Perfil de usuario</b></h2>
+       
+        <!--<p class="lead">Podras Ingresar a cargar o editar equipos.</p>-->
+        <hr class="my-2">
+       
+        <p class="lead"></p>
+        <h3>Modifique los datos del usuario: <b>{{usuario}}</b></h3>
+    <br>
 
     <form action="" method="POST">{% csrf_token %}
 
@@ -24,6 +35,16 @@
         <input type="submit", value="Enviar">
 
     </form>
+       
+       
+       
+        
+
+    </div>
+   
+</div>
+
+
 
   
 

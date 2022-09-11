@@ -1,16 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    {{mensaje}} 
+{% extends "base.html" %}
 
-</body> 
- 
-</html> 
-    
+{% block titulo %} Login Erroneo {% endblock %}
+
+{% block contenido %} 
+
+<div class="p-5 bg-light">
+    <div class="container">
+        {% load static %}
+        <img src="{% static 'equipos/Claro-Logo.png' %}"   height="50"  alt=""> 
+        <br>
+        <br>
+        <h2 class="display-5"><b>:(</b></h2>
+        <br>
+       {{mensaje}}
+       <br>
+       <br>
+        <!--<p class="lead">Podras Ingresar a cargar o editar equipos.</p>-->
+        <hr class="my-2">
+       
+        <p class="lead"></p>
+       
+        <a class="btn btn-secondary btn-lg" href="{% url 'inicio' %}" role="button">Volver a intentarlo</a>
+       
+        
+
+    </div>
+   
+</div>
+
+
+{% endblock %}

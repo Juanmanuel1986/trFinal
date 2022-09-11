@@ -23,12 +23,13 @@ def inicio(request): #es la solicitud que se le va a hacer a la aplicacion
 def nosotros(request): #es la solicitud que se le va a hacer a la aplicacion
     return render(request,'paginas/nosotros.html') #busca archivo nosotros.html y lo renderiza, lo busca en paginas/nosotros. dentro de templates.    
 
-
+@login_required
 def abmequipos(request): #accedo al index para ver los equipos.
     abmequipos = Equipo.objects.all()
     #print(abmequipos) 
     return render(request,'abmequipos/index.html', {'abmequipos': abmequipos})
 
+@login_required
 def niveles(request): 
     return render(request,'paginas/niveles.html')    
 
@@ -79,7 +80,7 @@ def login_request(request):
            
         else:
 
-            return render(request, "paginas/loginfallido.html", {"mensaje":"Formulario erroneo"})
+            return render(request, "paginas/loginfallido.html", {"mensaje":"Datos Erroneos, intente nuevamente"})
 
     form = AuthenticationForm()
 
@@ -98,7 +99,7 @@ def register(request):
 
                   username = form.cleaned_data['username']
                   form.save()
-                  return render(request,"paginas/inicio.html" ,  {"mensaje":"SU USUARIO FUE CREADO CORRECTAMENTE"})
+                  return render(request,"paginas/inicio.html" ,  {"mensaje":"¡Creacion de usuario exitosa!"})
 
       else:
             #form = UserCreationForm()       
