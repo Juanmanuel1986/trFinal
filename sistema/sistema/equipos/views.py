@@ -73,7 +73,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
 
-                return render(request, "paginas/inicio.html", {"mensaje":f"Bienvenido {usuario}"})
+                return render(request, "paginas/inicio.html", {"mensaje":f"Bienvenido, {usuario}"})
             else:
                 return render(request, "paginas/inicio.html", {"mensaje":"Datos incorrectos"})
            
@@ -136,3 +136,6 @@ def editarPerfil(request):
         miFormulario = UserEditForm(initial={'email': usuario.email})
 
     return render(request, "paginas/editarPerfil.html", {"miFormulario": miFormulario, "usuario": usuario})
+
+
+

@@ -16,7 +16,7 @@
 
 <body>
   <header>
-    <!-- place navbar here -->
+    <!-- place navbar here   "http://127.0.0.1:8000/logout"                                  -->
   </header>
 
 <nav class="navbar navbar-expand navbar-light bg-light">
@@ -25,8 +25,20 @@
         <a class="nav-item nav-link" href="{% url 'abmequipos' %}">Equipos</a>
         <a class="nav-item nav-link" href="{% url 'niveles' %}">Niveles</a>
         <a class="nav-item nav-link" href="{% url 'nosotros' %}">Nosotros</a>
-    </div>
+        <a class="nav-item nav-link" href="#"></a>
+        <a class="nav-item nav-link" href="#"><p style="color:#FF0000";>{{mensaje}}</p></a>
+        <a class="nav-item nav-link" href="{% url 'Logout' %}" style="float:right" ><b>Cerrar sesion</b></a>
+
+      </div>
 </nav>
+
+
+
+
+
+
+
+
 
 <br>
 <div class="container">

@@ -1,11 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <h1>Te has deslogueado...</h1>
+{% extends "base.html" %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block contenido %} 
+
+<div class="p-5 bg-light">
+    <div class="container">
+        {% load static %}
+        <img src="{% static 'equipos/Claro-Logo.png' %}"   height="50"  alt=""> 
+        <br>
+        <h4 class="display-6">¡Estas deslogueado! Regresa pronto :)</h4>
+       
+        
+        
+
+    </div>
+   
+</div>
+
+
+{% endblock %}
